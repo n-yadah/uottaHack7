@@ -7,11 +7,7 @@ const App = () => {
 
     <>
 
-    <StrictMode>
-
     <PlaybackScreen />
-
-    </StrictMode>
 
     </>
 
