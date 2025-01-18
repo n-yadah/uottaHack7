@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meyda Audio Analysis</title>
+  <script src="https://unpkg.com/meyda"></script>
+</head>
+<body>
+  <script>
+    let audioContext;
+    let source;
+    let analyzer;
+
+    // Set up Meyda when the audio starts
+    function setupMeyda(audioElement) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      source = audioContext.createMediaElementSource(audioElement);
+
+      analyzer = Meyda.createMeydaAnalyzer({
+        audioContext,
+        source,
+        bufferSize: 512,
+        featureExtractors: ['rms', 'spectralCentroid', 'zcr'],
+        callback: (features) => {
+          window.ReactNativeWebView.postMessage(JSON.stringify(features));
+        },
+      });
+
+      analyzer.start();
+    }
+
+    // Add an audio player to the page
+    window.onload = () => {
+      const audioElement = document.createElement('audio');
+      audioElement.src = ''; // Add your audio file URL dynamically
+      document.body.appendChild(audioElement);
+
+      audioElement.addEventListener('play', () => {
+        setupMeyda(audioElement);
+      });
+    };
+  </script>
+</body>
+</html>
