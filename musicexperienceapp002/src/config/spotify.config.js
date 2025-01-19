@@ -6,6 +6,9 @@ export const spotifyAuthConfig = {
     "user-read-playback-state",
     "user-modify-playback-state",
     "playlist-read-private",
+    "user-read-playback-state",
+    "user-top-read",
+    "streaming",
   ],
   serviceConfiguration: {
     authorizationEndpoint: "https://accounts.spotify.com/authorize",

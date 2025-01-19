@@ -62,7 +62,7 @@
 
 #brand {
   font-family: 'Georgia', sans-serif; /* Replace 'Roboto' with your preferred font */
-  font-size: 28px; /* Adjust the size as needed */
+  font-size: 30px; /* Adjust the size as needed */
   
 }
 
@@ -74,4 +74,9 @@
   max-width: 25% !important;
   margin: 0 auto !important;
 
+}
+
+
+.me-auto {
+  font-size: 14px;
 }
