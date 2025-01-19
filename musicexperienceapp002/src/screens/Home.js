@@ -3,6 +3,12 @@ import { Container, Form, FormControl, Row, Col } from 'react-bootstrap';
 import Typewriter from 'typewriter-effect';
 import NavigationBar from '../components/NavigationBar';
 
+const spotifyAuthConfig = {
+  clientId: 'e09ce886105947c19bbc508f3d168b2d',
+  redirectUri: 'http://localhost:3000',
+  scopes: ['user-top-read', 'playlist-read-private'],
+};
+
 const Home = () => {
   const [token, setToken] = useState('');
   const [tracks, setTracks] = useState([]);
@@ -18,6 +24,7 @@ const Home = () => {
       fetchUserPlaylists(storedToken);
     }
   }, []);
+  
 
   const fetchTopTracks = async (token) => {
     try {
@@ -26,6 +33,15 @@ const Home = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      if (response.status === 401) {
+        // Token is invalid, clear it and redirect to Spotify auth
+        localStorage.removeItem('spotifyToken');
+        localStorage.removeItem('spotifyTokenExpiry');
+        window.location.href = `https://accounts.spotify.com/authorize?client_id=${spotifyAuthConfig.clientId}&response_type=token&redirect_uri=${spotifyAuthConfig.redirectUri}&scope=${spotifyAuthConfig.scopes.join(' ')}`;
+        return;
+      }
+
       const data = await response.json();
       setTracks(data.items || []);
     } catch (error) {
@@ -146,7 +162,7 @@ const Home = () => {
         </div>
 
         {/* Recently Played Section */}
-        <h3>Recently Played</h3>
+        <h3>Recently Played 🎶 </h3>
         <div className="border-top my-3" style={{ borderColor: '#660E60' }}></div>
         <Row className="mb-4" style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
         {tracks.length > 0
@@ -201,7 +217,7 @@ const Home = () => {
         </Row>
 
         {/* Featured Playlists Section */}
-        <h3>Featured Playlists</h3>
+        <h3>Featured Playlists 🎧</h3>
         <div className="border-top my-3" style={{ borderColor: '#660E60' }}></div>
         <Row style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
   {playlists.length > 0

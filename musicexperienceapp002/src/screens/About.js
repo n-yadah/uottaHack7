@@ -9,7 +9,6 @@ const About = () => {
       <NavigationBar />
 
       {/* About Content */}
-      {/* About Content */}
       <div style={{ backgroundColor: '#660E60', color: '#ffffff', minHeight: '100vh', padding: '20px 0' }}>
         <Container>
           <h1 className="mb-4" style={{fontFamily: 'Courier New'}}>About MusEx</h1>

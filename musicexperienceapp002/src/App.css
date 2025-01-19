@@ -69,9 +69,10 @@
 .container-with-outline {
   outline: 2px solid #1DB954;
   outline-offset: 4px;
-  padding: 10px;
+  padding-bottom: 16px;
+  padding-top: -2px;
   border-radius: 10px;
-  max-width: 25% !important;
+  max-width: 30% !important;
   margin: 0 auto !important;
 
 }
