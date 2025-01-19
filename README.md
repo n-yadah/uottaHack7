@@ -8,4 +8,4 @@ Created by Zachary Pelletier and Yadah Ngolo, Music Experience represents a blen
 
 © 2025 Music Experience. All rights reserved.
 
-[Final Minimum Vibale Product uOttaHack 7]https://github.com/n-yadah/uottaHack7/tree/main/musicexperienceapp002
+[Final Minimum Vibale Product uOttaHack 7](https://github.com/n-yadah/uottaHack7/tree/main/musicexperienceapp002)
